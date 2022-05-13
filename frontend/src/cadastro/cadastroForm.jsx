@@ -1,0 +1,32 @@
+import React from "react";
+import IconButton from "../template/iconButton";
+
+export default props => {
+    const keyrender = (e) => {
+        if (e.key === 'Enter') {
+           e.shiftKey ? props.handleSearch() : props.handleAdd();
+        } else if (e.key === 'Escape') {
+            props.handleClear();
+        }
+    }
+    return (
+    <div role='form' className="todoForm">
+            <div className="col-xs-12 col-sm-9 col-md-10">
+                <input id='nome' className='form-control'
+                    placeholder="Digite seu nome"
+                    onChange={props.handleChange}
+                    onKeyUp={keyrender}
+                    value={props.nome}></input>
+            </div>
+
+            <div className=" col-xs-12 col-sm-3 col-md-2">
+                <IconButton style='primary' icon='plus'
+                    onClick={props.handleAdd}></IconButton>
+                <IconButton style='info' icon='search'
+                    onClick={props.handleSearch}></IconButton>
+                <IconButton style='danger' icon='close' 
+                    onClick={props.handleClear}></IconButton>
+            </div>
+
+    </div>
+)}
